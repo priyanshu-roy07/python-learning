@@ -17,10 +17,24 @@ while num > 0:
 print(f"The number contains {count} digits.")"""
 
 #Reverse a number.
-num = int(input("Enter a number: "))
+"""num = int(input("Enter a number: "))
 reversed_num = 0
 while num > 0:
     digit = num % 10
     reversed_num = reversed_num * 10 + digit
     num //= 10
-print(f"The reversed number is: {reversed_num}")
+print(f"The reversed number is: {reversed_num}")"""
+
+#Print the pattern
+
+"""for i in range(1, 6):
+    for j in range(1, i+1):
+        print("*", end = " ")
+    print()"""
+
+#print reverse pattern
+
+"""for i in range(5, 0, -1):
+    for j in range(1, i+1):
+        print("*", end = " ")
+    print()"""
