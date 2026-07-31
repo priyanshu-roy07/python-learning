@@ -48,9 +48,9 @@ for mark in marks:
 print(f"The largest number is {largest}")"""
 
 #Count students who scored above 90
-marks = [85, 92, 78, 95, 88, 99]
+"""marks = [85, 92, 78, 95, 88, 99]
 count = 0
 for mark in marks:
     if mark > 90:
         count += 1
-print(count)
+print(count)"""
