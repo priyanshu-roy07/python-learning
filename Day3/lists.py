@@ -40,9 +40,17 @@ average = total/len(marks)
 print(average)"""
 
 #Finding largest value
-marks = [85, 92, 78, 95, 88]
+"""marks = [85, 92, 78, 95, 88]
 largest = marks[0]
 for mark in marks:
     if mark > largest:
         largest = mark
-print(f"The largest number is {largest}")
+print(f"The largest number is {largest}")"""
+
+#Count students who scored above 90
+marks = [85, 92, 78, 95, 88, 99]
+count = 0
+for mark in marks:
+    if mark > 90:
+        count += 1
+print(count)
