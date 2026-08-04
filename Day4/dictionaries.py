@@ -29,8 +29,7 @@ print(employee.keys())
 print(employee.values())"""
 
 # MINI PROJECT - Student Database
-students = {}
-
+"""students = {}
 while True:
     name = input("Enter your name: ")
     marks = int(input("Enter your marks: "))
@@ -39,4 +38,4 @@ while True:
     if choice == "n":
         break
 for key, value in students.items():
-    print(key,":", value)
+    print(key,":", value)"""
