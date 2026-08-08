@@ -31,7 +31,6 @@ with open("file.txt", "w") as file:
     for i in range(0,3):
         name = input("Enter your name: ")
         file.write(name + "\n")
-    file.close()
 
 with open("file.txt", "r") as file:
     print(file.read())
