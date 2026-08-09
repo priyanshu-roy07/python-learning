@@ -1,3 +1,18 @@
+def calculate_average (marks):
+    total = 0
+    for mark in marks:
+        total += mark
+    return total/len(marks)
+
+def find_highest(marks):
+    highest = marks[0]
+
+    for mark in marks:
+        if mark > highest:
+            highest = mark
+
+    return highest
+
 students = {}
 
 while True:
@@ -21,33 +36,39 @@ while True:
         students[name] = {
             "marks": marks
         }
-
-        print("name:", name)
-        print("marks:", marks)
-        print("students:", students)
         
-        students[name] = students[name][marks]
-    """elif choice == "2":
+    elif choice == "2":
         for name, details in students.items():
-            print(name, details["marks"])
+            print(name,"->", details["marks"])
+
     elif choice == "3":
-        total = 0
-        for mark in marks:
-            total += mark
-        average = total/len(students)
-    elif choice == "4":
-        highest = marks[0]
-        for mark in marks:
-            if mark > highest:
-                highest = mark
-        print(highest)
-    elif choice == "5":
-        search = input("Enter student to search: ")
+        search = input("Enter student name: ")
+
         if search in students:
-            print("Student found")
+            marks = students[search]["marks"]
+            average = calculate_average(marks)
+            print("Average marks: ",average)
         else:
-            print("Not found!")
+            print("Student not found!")
+
+    elif choice == "4":
+        search = input("Enter student name: ")
+
+        if search in students:
+            marks = students[search]["marks"]
+            highest = find_highest(marks)
+            print("Highest marks:", highest)
+
+        else:
+            print("Student not found")
+    elif choice == "5":
+            search = input("Enter student to search: ")
+            if search in students:
+                print("Student found")
+            else:
+                print("Student not found!")
     elif choice == "6":
         print("Thankyou!")
         break
-"""
+    else:
+        print("Invalid choice!")
