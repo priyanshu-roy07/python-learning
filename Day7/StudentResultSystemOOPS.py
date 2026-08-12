@@ -35,6 +35,6 @@ for student in students:
 
 class StudentManager:
     def __init__(self):
-        pass
+        self.students = []
 manager = StudentManager()
-print(manager)
+print(manager.students)
