@@ -36,5 +36,9 @@ for student in students:
 class StudentManager:
     def __init__(self):
         self.students = []
+    def add_student(self, student):
+        self.students.append(student)
+
+student1 = student()
 manager = StudentManager()
 print(manager.students)
