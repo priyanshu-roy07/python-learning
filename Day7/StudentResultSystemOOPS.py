@@ -49,7 +49,7 @@ class StudentManager:
                 student.update_marks(new_marks)
                 found = True
         if found is False:
-            print("Student not found!")
+            return None
     def remove_student(self, student_name):
         found = False
         for student in self.students:
@@ -57,10 +57,10 @@ class StudentManager:
                 self.students.remove(student)
                 found = True
         if found is False:
-            print("Student not found!")
+            return None
     def find_highest(self):
         if not self.students:
-            print("No student in the list!")
+            return None
         else:
             highest = self.students[0]
             for student in self.students:
@@ -86,10 +86,13 @@ while True:
         name = input("Enter student name: ")
         
         marks = []
-        
-        marks.append(int(input("Enter mark1: ")))
-        marks.append(int(input("Enter mark2: ")))
-        marks.append(int(input("Enter mark3: ")))
+        try:
+            marks.append(int(input("Enter mark1: ")))
+            marks.append(int(input("Enter mark2: ")))
+            marks.append(int(input("Enter mark3: ")))
+        except ValueError:
+            print("Invalid input")
+            continue
 
         new_student = Student(name, marks)
         manager.add_student(new_student)
@@ -106,9 +109,13 @@ while True:
                 
         new_marks = []
                 
-        new_marks.append(int(input("Enter mark1: ")))
-        new_marks.append(int(input("Enter mark2: ")))
-        new_marks.append(int(input("Enter mark3: ")))
+        try:
+            new_marks.append(int(input("Enter mark1: ")))
+            new_marks.append(int(input("Enter mark2: ")))
+            new_marks.append(int(input("Enter mark3: ")))
+        except ValueError:
+            print("Invalid input")
+            continue
 
         manager.update_student_marks(name, new_marks)
 
@@ -118,8 +125,12 @@ while True:
 
     elif choice == "6":
         highest = manager.find_highest()
-        print(f"Student with highest marks: {highest.name} \n His marks average : {highest.calculate_average()}\n Grade: {highest.calculate_grade()}")
+        if highest:
+            print(f"Student with highest marks: {highest.name} \n His marks average : {highest.calculate_average()}\n Grade: {highest.calculate_grade()}")
+        else:
+            print("No student in the list.")
 
     elif choice == "7":
         print("Thankyou!")
         break
+    
