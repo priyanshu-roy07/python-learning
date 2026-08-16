@@ -2,6 +2,7 @@ class Student:
     def __init__(self, name, marks):
         self.name = name
         self.marks = marks
+
     def display_info(self):
         print(self.name, self.marks)
     def calculate_average(self):
@@ -21,17 +22,10 @@ class Student:
     def update_marks(self, new_marks):
         self.marks = new_marks
 
-student1 = Student("Priyanshu", [98, 95, 94])
-student2 = Student("Aman", [89, 78, 86])
-student3 = Student("Bumba", [78, 67, 86])
-
-#students = [student1, student2, student3]
-
-#student2.update_marks([56,44,65])
-
 class StudentManager:
     def __init__(self):
         self.students = []
+        
     def add_student(self, student):
         self.students.append(student)
     def view_students(self):
@@ -64,13 +58,68 @@ class StudentManager:
                 found = True
         if found is False:
             print("Student not found!")
+    def find_highest(self):
+        if not self.students:
+            print("No student in the list!")
+        else:
+            highest = self.students[0]
+            for student in self.students:
+                if student.calculate_average() > highest.calculate_average():
+                    highest = student
+            return highest
+
 manager = StudentManager()
-manager.add_student(student1)
-manager.add_student(student2)
-manager.add_student(student3)
-"""manager.search_students("Priyanshu")
-#manager.search_students("Shivam")
-manager.update_student_marks("Aman", [87, 78, 77])
-manager.search_students("Aman")"""
-manager.remove_student("Bumba")
-manager.view_students()
+
+while True:
+    print("\n===== STUDENT RESULT SYSTEM =====")
+    print("1. Add Student")
+    print("2. View Students")
+    print("3. Search Student")
+    print("4. Update Marks")
+    print("5. Remove Student")
+    print("6. Find Highest")
+    print("7. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        name = input("Enter student name: ")
+        
+        marks = []
+        
+        marks.append(int(input("Enter mark1: ")))
+        marks.append(int(input("Enter mark2: ")))
+        marks.append(int(input("Enter mark3: ")))
+
+        new_student = Student(name, marks)
+        manager.add_student(new_student)
+
+    elif choice == "2":
+        manager.view_students()
+
+    elif choice == "3":
+        name = input("Enter student name to search: ")
+        manager.search_students(name)
+
+    elif choice == "4":
+        name = input("Enter student name: ")
+                
+        new_marks = []
+                
+        new_marks.append(int(input("Enter mark1: ")))
+        new_marks.append(int(input("Enter mark2: ")))
+        new_marks.append(int(input("Enter mark3: ")))
+
+        manager.update_student_marks(name, new_marks)
+
+    elif choice == "5":
+        name = input("Enter student name: ")
+        manager.remove_student(name)
+
+    elif choice == "6":
+        highest = manager.find_highest()
+        print(f"Student with highest marks: {highest.name} \n His marks average : {highest.calculate_average()}\n Grade: {highest.calculate_grade()}")
+
+    elif choice == "7":
+        print("Thankyou!")
+        break
