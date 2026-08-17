@@ -128,7 +128,7 @@ while True:
         if highest:
             print(f"Student with highest marks: {highest.name} \n His marks average : {highest.calculate_average()}\n Grade: {highest.calculate_grade()}")
         else:
-            print("No student in the list.")
+            print("No student in the list")
 
     elif choice == "7":
         print("Thankyou!")
