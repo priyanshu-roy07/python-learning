@@ -50,6 +50,7 @@ class StudentManager:
                 found = True
         if found is False:
             return None
+        return "Marks updated successfully!"
     def remove_student(self, student_name):
         found = False
         for student in self.students:
@@ -58,6 +59,7 @@ class StudentManager:
                 found = True
         if found is False:
             return None
+        return "Student removed successfully!"
     def find_highest(self):
         if not self.students:
             return None
@@ -90,12 +92,19 @@ while True:
             marks.append(int(input("Enter mark1: ")))
             marks.append(int(input("Enter mark2: ")))
             marks.append(int(input("Enter mark3: ")))
+
+            invalid = False
+            for mark in marks:
+                if mark < 0 or mark > 100:
+                    print("Invalid mark! Marks must be between 0 and 100.")
+                    invalid = True
         except ValueError:
             print("Invalid input")
             continue
 
-        new_student = Student(name, marks)
-        manager.add_student(new_student)
+        if not invalid:
+            new_student = Student(name, marks)
+            manager.add_student(new_student)
 
     elif choice == "2":
         manager.view_students()
@@ -113,15 +122,29 @@ while True:
             new_marks.append(int(input("Enter mark1: ")))
             new_marks.append(int(input("Enter mark2: ")))
             new_marks.append(int(input("Enter mark3: ")))
+            invalid = False
+            for mark in new_marks:
+                if mark < 0 or mark > 100:
+                    print("Invalid mark! Marks must be between 0 and 100.")
+                    invalid = True
         except ValueError:
             print("Invalid input")
             continue
 
-        manager.update_student_marks(name, new_marks)
+        if not invalid:
+            result = manager.update_student_marks(name, new_marks)
+            if result:
+                print("Marks updated successfully")
+            else:
+                print("Student not found")
 
     elif choice == "5":
         name = input("Enter student name: ")
-        manager.remove_student(name)
+        result = manager.remove_student(name)
+        if result:
+            print("Student removed successfully")
+        else:
+            print("Student not found")
 
     elif choice == "6":
         highest = manager.find_highest()
