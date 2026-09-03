@@ -38,9 +38,34 @@ with open("students.txt", "r") as file:
 
 #EXCEPTION HANDLING FOR FILE NOT FOUND ERROR
 
-try:
+"""try:
     with open("unknown.txt", "r") as file:
         for line in file:
             print(line, end="")
 except FileNotFoundError:
-    print("File not found!")
+    print("File not found!")"""
+
+
+#JSON
+
+import json
+
+student = {
+    "name" : "Priyanshu",
+    "age" : 22,
+    "city" : "Delhi"
+}
+#NOTE
+#json.dump() → Python → JSON
+#json.load() → JSON → Python
+
+with open("student.json", "w") as file:
+    json.dump(student, file, indent= 4)
+
+with open("student.json", "r") as file:
+    student = json.load(file)
+
+print(student)
+print(student["name"])
+print(student["city"])
+
