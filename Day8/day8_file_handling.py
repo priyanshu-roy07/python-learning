@@ -11,12 +11,36 @@ print(file.read())
 file.close()"""
 
 """with open("notes.txt", "r") as file:
-    #print(file.readline())
-    print(file.readlines())
-    #print(file.read())
+    #print(file.readline())               #one line    → string
+    print(file.readlines())               #all lines   → list
+    #print(file.read())                   #entire file → string
 """
-with open("notes.txt", "r") as file:
+"""with open("notes.txt", "r") as file:
     lines = file.readlines()
-print(lines[0])
+print(lines[0])"""
 #for line in lines:
  #   print(line)
+
+
+#file = open("students.txt", "w")
+#file.write("Priyanshu\nAman\nRahul")
+#file.close()
+
+"""with open("students.txt", "w") as file:
+    file.write("Priyanshu\nAman\nRahul\n")
+
+with open("students.txt", "a") as file:
+    file.write("Rohit\n")
+
+with open("students.txt", "r") as file:
+    for line in file:
+        print(line, end="")"""
+
+#EXCEPTION HANDLING FOR FILE NOT FOUND ERROR
+
+try:
+    with open("unknown.txt", "r") as file:
+        for line in file:
+            print(line, end="")
+except FileNotFoundError:
+    print("File not found!")
