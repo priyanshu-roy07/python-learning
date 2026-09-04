@@ -67,5 +67,5 @@ with open("student.json", "r") as file:
 
 print(student)
 print(student["name"])
+print(student["age"])
 print(student["city"])
-
