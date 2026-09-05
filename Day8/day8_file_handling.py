@@ -50,11 +50,20 @@ except FileNotFoundError:
 
 import json
 
-student = {
+student = [
+    {
     "name" : "Priyanshu",
-    "age" : 22,
-    "city" : "Delhi"
-}
+    "marks" : 98,
+    },
+    {
+    "name" : "Aman",
+    "marks" : 89,
+    },
+    {
+    "name" : "Rahul",
+    "marks" : 78,
+    }
+]
 #NOTE
 #json.dump() → Python → JSON
 #json.load() → JSON → Python
@@ -66,6 +75,11 @@ with open("student.json", "r") as file:
     student = json.load(file)
 
 print(student)
-print(student["name"])
-print(student["age"])
-print(student["city"])
+print(student[0]["name"])
+print(student[0]["marks"])
+
+print(student[1]["name"])
+print(student[1]["marks"])
+
+print(student[2]["name"])
+print(student[2]["marks"])
