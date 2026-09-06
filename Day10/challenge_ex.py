@@ -27,4 +27,14 @@ avgg = map(lambda student : calculate_average(*student["marks"]), students)
 print(list(avgg))
 
 passing_students = filter(lambda student : is_pass(calculate_average(*student["marks"])) == "Pass", students)
-print(list(passing_students))
+for student in passing_students:
+    print(student["name"], "->", calculate_average(*student["marks"]))
+
+stud = sorted(students, key = lambda student : calculate_average(*student["marks"]), reverse= True)
+for student in stud:
+    print(student["name"], "->", calculate_average(*student["marks"]))
+
+def display_info(**kwargs):
+    for key, value in kwargs.items():
+        print(key, ":", value)
+display_info(name="Priyanshu", average=91.67, status="Pass")
