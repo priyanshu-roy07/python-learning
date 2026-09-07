@@ -13,15 +13,15 @@ def calculate_average(*args):
     for mark in args:
         total += mark
     return total/len(args)
-avg = calculate_average(85, 75, 90)
-print(avg)
+#avg = calculate_average(85, 75, 90)
+#print(avg)
 
 def is_pass(average, passing_marks = 40):
     if average >= passing_marks:
         return "Pass"
     else:
         return "Fail"
-print(is_pass(avg))
+#print(is_pass(avg))
 
 avgg = map(lambda student : calculate_average(*student["marks"]), students)
 print(list(avgg))
@@ -32,9 +32,10 @@ for student in passing_students:
 
 stud = sorted(students, key = lambda student : calculate_average(*student["marks"]), reverse= True)
 for student in stud:
-    print(student["name"], "->", calculate_average(*student["marks"]))
+    average = calculate_average(*student["marks"])
+    print(student["name"], "->", f"{average:.2f}" , "->",is_pass(average))
 
 def display_info(**kwargs):
     for key, value in kwargs.items():
         print(key, ":", value)
-display_info(name="Priyanshu", average=91.67, status="Pass")
+#display_info(name="Priyanshu", average=91.67, status="Pass")
