@@ -33,7 +33,7 @@ for student in passing_students:
 stud = sorted(students, key = lambda student : calculate_average(*student["marks"]), reverse= True)
 for student in stud:
     average = calculate_average(*student["marks"])
-    print(student["name"], "->", f"{average:.2f}" , "->",is_pass(average))
+    print(student["name"], "->", f"{average:.2f}" , "-",is_pass(average))
 
 def display_info(**kwargs):
     for key, value in kwargs.items():
