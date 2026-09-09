@@ -43,7 +43,7 @@ show_profile(name="Priyanshu", age=22, job="Engineer")"""
 print(double(5))
 
 square = lambda x : x**2
-print(square(7))"""
+print(square(9))"""
 
 #map()          map(function, collection)
 
