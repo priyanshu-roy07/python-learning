@@ -40,10 +40,10 @@ show_profile(name="Priyanshu", age=22, job="Engineer")"""
 #def double(x):
 #    return x * 2
 """double = lambda x : x*2
-print(double(5))
+print(double(7))
 
 square = lambda x : x**2
-print(square(9))"""
+print(square(11))"""
 
 #map()          map(function, collection)
 
