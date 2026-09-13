@@ -49,11 +49,54 @@ for num in result:
 
 #CHALLENGE3
 # A generator that reads a list of numbers and yields only the numbers greater than 50, one at a time.
-numbers = [20, 55, 30, 80, 45, 100, 60]
+"""numbers = [20, 55, 30, 80, 45, 100, 60]
 def above_50(numbers):
     for number in numbers:
         if number > 50:
             yield number
 result = above_50(numbers)
+for num in result:
+    print(num)"""
+
+"""
+| `return`                             | `yield`                               |
+| ------------------------------------ | ------------------------------------- |
+| Gives a value and ends the function  | Gives a value and pauses the function |
+| Can normally return one final result | Can produce many values               |
+| Function execution stops             | Execution can resume                  |
+| Doesn't create a generator           | Creates a generator                   |
+"""
+
+#CHALLENGE4
+"""def fibonacci(n):
+    first = 0 
+    second = 1
+    for i in range(0,n):
+        yield first
+        old_first = first
+        first = second
+        second = old_first + second
+result = fibonacci(7)
+
+for num in result:
+    print(num)"""
+
+#CHALLENGE5
+#EVEN FIBONACCI
+
+def even_fibonacci(n):
+    first = 0 
+    second = 1
+    count = 0 
+
+    while count < n:
+        if first % 2 == 0:
+            yield first
+            count += 1
+        old_first = first
+        first = second
+        second = old_first + second
+        
+result = even_fibonacci(5)
 for num in result:
     print(num)
