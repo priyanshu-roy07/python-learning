@@ -97,6 +97,6 @@ def even_fibonacci(n):
         first = second
         second = old_first + second
         
-result = even_fibonacci(5)
+result = even_fibonacci(7)
 for num in result:
     print(num)
