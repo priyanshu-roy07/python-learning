@@ -26,10 +26,20 @@ print(math.pow(5,3))
 print(math.pi)
 print(dir(math))"""
 
-
 #CHALLENGE
+"""from student_utils import calculate_average, is_pass
+marks = [75, 82, 68, 90]
+average = calculate_average(marks)
+print(average)
+print(is_pass(average))"""
 
-from student_utils import calculate_average, is_pass
+
+#NOTE - next topic
+#PACKAGE - A package lets us organize related modules into a folder.
+
+from student.marks import calculate_average
+from student.students import is_pass
+
 marks = [75, 82, 68, 90]
 average = calculate_average(marks)
 print(average)
