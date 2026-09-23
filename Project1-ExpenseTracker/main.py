@@ -30,6 +30,40 @@ def search_expenses():
         if not found: 
             print("No matching expenses found!")
 
+def delete_expense():
+    search_item = int(input("Enter expense number to delete: "))
+
+    if not expenses:
+        print("No expenses found!") 
+    else:
+        deleted_expense = expenses.pop(search_item - 1)
+        print("Expense deleted successfully!")
+
+def total_spending():
+    total = 0
+
+    if not expenses:
+        print("No expenses found!") 
+    else:
+        for items in expenses:
+            total = total + items['amount']
+        print(f"Total spending : {total}")
+
+def spending_by_category():
+    category_totals = {}
+    if not expenses:
+            print("No expenses found!") 
+    else:
+        for items in expenses: 
+            category = items['category']
+            amount = items['amount']
+            if category in category_totals:
+                category_totals[category] = category_totals[category] + amount
+            else:
+                category_totals[category] = amount
+        for category, total in category_totals.items():
+            print(f"{category}: {total}")
+        
 while True:
     print("1. Add expense")
     print("2. View expenses")
@@ -48,6 +82,12 @@ while True:
         view_expenses()
     elif choice == "3":
         search_expenses()
+    elif choice == "4":
+        delete_expense()
+    elif choice == "5":
+        total_spending()
+    elif choice == "6":
+        spending_by_category()
     elif choice == "8":
         print("Goodbye!")
         break
