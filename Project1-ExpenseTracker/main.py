@@ -1,3 +1,5 @@
+import json
+
 expenses = []
 
 def add_expense():
@@ -63,7 +65,22 @@ def spending_by_category():
                 category_totals[category] = amount
         for category, total in category_totals.items():
             print(f"{category}: {total}")
-        
+
+def save_data():
+    with open("expenses.json", "w") as file:
+        json.dump(expenses, file, indent=4)
+    print("Data saved successfully!")
+
+def load_data():
+    global expenses
+    try:
+        with open("expenses.json", "r") as file:
+            expenses = json.load(file)
+    except FileNotFoundError:
+        print("File not found!")
+
+load_data()
+
 while True:
     print("1. Add expense")
     print("2. View expenses")
@@ -88,6 +105,8 @@ while True:
         total_spending()
     elif choice == "6":
         spending_by_category()
+    elif choice == "7":
+        save_data()
     elif choice == "8":
         print("Goodbye!")
         break
