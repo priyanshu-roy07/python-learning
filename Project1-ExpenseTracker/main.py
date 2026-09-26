@@ -77,7 +77,7 @@ def load_data():
         with open("expenses.json", "r") as file:
             expenses = json.load(file)
     except FileNotFoundError:
-        print("File not found!")
+        print("No saved expenses found. Starting with an empty list.")
 
 load_data()
 
