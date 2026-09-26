@@ -18,5 +18,15 @@
         "description": "pizza",
         "amount": 499,
         "category": "food"
+    },
+    {
+        "description": "burger",
+        "amount": 199,
+        "category": "food"
+    },
+    {
+        "description": "cab",
+        "amount": 600,
+        "category": "transport"
     }
 ]
