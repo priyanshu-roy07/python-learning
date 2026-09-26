@@ -1,0 +1,22 @@
+[
+    {
+        "description": "fuel",
+        "amount": 799,
+        "category": "transport"
+    },
+    {
+        "description": "books",
+        "amount": 2999,
+        "category": "education"
+    },
+    {
+        "description": "metro",
+        "amount": 199,
+        "category": "transport"
+    },
+    {
+        "description": "pizza",
+        "amount": 499,
+        "category": "food"
+    }
+]

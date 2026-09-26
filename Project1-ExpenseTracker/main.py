@@ -1,13 +1,34 @@
 import json
+from pathlib import Path
+
+DATA_FILE = Path(__file__).parent / "expenses.json"
 
 expenses = []
 
 def add_expense():
+    description = input("Enter description: ").strip()
+    if not description:
+        print("Description cannot be empty.")
+        return
 
+    try:
+        amount = int(input("Enter amount: "))
+    except ValueError:
+        print("Invalid amount! Please enter a number.")
+        return
+    if amount <= 0:
+        print("Amount must be greater than 0.")
+        return
+
+    category = input("Enter category: ").strip()
+    if not category:
+        print("Category cannot be empty.")
+        return
+    
     expense = {
-        "description" : input("Enter description: "),
-        "amount" : int(input("Enter amount: ")),
-        "category" : input("Enter category: ")
+        "description": description,
+        "amount": amount,
+        "category": category
     }
     expenses.append(expense)
     print("Expense added successfully")
@@ -20,10 +41,10 @@ def view_expenses():
                 print(f"{number} -> {items['description']} | {items['amount']} | {items['category']}")
 
 def search_expenses(): 
-    search_term = input("Enter what to search: ").lower() 
+    search_term = input("Enter what to search: ").strip().lower()
     found = False 
     if not expenses: 
-        print("No expenses found!") 
+        print("No expenses found!")
     else: 
         for number, items in enumerate(expenses, start=1): 
             if ( search_term in items["description"].lower() or search_term in items["category"].lower() ): 
@@ -33,13 +54,20 @@ def search_expenses():
             print("No matching expenses found!")
 
 def delete_expense():
-    search_item = int(input("Enter expense number to delete: "))
+    try:
+        search_item = int(input("Enter expense number to delete: "))
+    except ValueError:
+        print("Invalid expense number! Please enter a number.")
+        return
 
     if not expenses:
-        print("No expenses found!") 
-    else:
-        deleted_expense = expenses.pop(search_item - 1)
-        print("Expense deleted successfully!")
+        print("No expenses found!")
+        return
+    if search_item < 1 or search_item > len(expenses):
+        print("Invalid expense number!")
+        return
+    deleted_expense = expenses.pop(search_item - 1)
+    print("Expense deleted successfully!")
 
 def total_spending():
     total = 0
@@ -67,17 +95,19 @@ def spending_by_category():
             print(f"{category}: {total}")
 
 def save_data():
-    with open("expenses.json", "w") as file:
+    with open(DATA_FILE, "w") as file:
         json.dump(expenses, file, indent=4)
     print("Data saved successfully!")
 
 def load_data():
     global expenses
     try:
-        with open("expenses.json", "r") as file:
+        with open(DATA_FILE, "r") as file:
             expenses = json.load(file)
     except FileNotFoundError:
         print("No saved expenses found. Starting with an empty list.")
+    except json.JSONDecodeError:
+        print("Saved data is corrupted. Starting with an empty list.")
 
 load_data()
 
